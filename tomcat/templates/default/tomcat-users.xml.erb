@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -15,7 +15,11 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<Context path="/manager" 
-        docBase="<%= node[:tomcat6][:manager_dir]%>" 
-        antiResourceLocking="false" privileged="true">
-</Context>
+<tomcat-users>
+<% @roles.each do |role| -%>
+<role rolename="<%= role %>" />
+<% end -%>
+<% @users.each do |user| -%>
+<user username="<%= user['id'] %>" password="<%= user['password'] %>" roles="<%= user['roles'].join(', ') %>" />
+<% end -%>
+</tomcat-users>
