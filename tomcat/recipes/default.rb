@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+include_recipe "java" 
 
 tomcat_pkgs = value_for_platform(
   ["debian","ubuntu"] => {
