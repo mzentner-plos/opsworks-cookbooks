@@ -21,7 +21,7 @@
 #
 
 # Where your java installation lives
-JAVA_HOME=<%= node["java"]["java_home"] %>
+#JAVA_HOME=<%= node["java"]["java_home"] %>
 
 # Where your tomcat installation lives
 CATALINA_BASE="<%= node["tomcat"]["base"] %>"
@@ -30,7 +30,7 @@ JASPER_HOME="<%= node["tomcat"]["home"] %>"
 CATALINA_TMPDIR="<%= node["tomcat"]["tmp_dir"] %>"
 
 # You can pass some parameters to java here if you wish to
-JAVA_OPTS="<%= node["tomcat"]["java_options"] %>"
+#JAVA_OPTS="<%= node["tomcat"]["java_options"] %>"
 
 # Use JAVA_OPTS to set java.library.path for libtcnative.so
 #JAVA_OPTS="-Djava.library.path=/usr/lib64"
