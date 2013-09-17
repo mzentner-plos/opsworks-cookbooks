@@ -19,28 +19,30 @@
 require 'aws/s3'
 
 class Chef
-class Provider
-class S3File < Chef::Provider::RemoteFile
-def action_create
-Chef::Log.debug("Checking #{@new_resource} for changes")
+  class Provider
+    class S3File < Chef::Provider::RemoteFile
+      def action_create
+        Chef::Log.debug("Checking #{@new_resource} for changes")
  
-if current_resource_matches_target_checksum?
-  Chef::Log.debug("File #{@new_resource} checksum matches target checksum (#{@new_resource.checksum}), not updating")
-else
-  Chef::Log.debug("File #{@current_resource} checksum didn't match target checksum (#{@new_resource.checksum}), updating")
+        if current_resource_matches_target_checksum?
+          Chef::Log.debug("File #{@new_resource} checksum matches target checksum (#{@new_resource.checksum}), not updating")
+        else
+          Chef::Log.debug("File #{@current_resource} checksum didn't match target checksum (#{@new_resource.checksum}), updating")
 
-  fetch_from_s3(@new_resource.source) do |raw_file|
-if matches_current_checksum?(raw_file)
-  Chef::Log.debug "#{@new_resource}: Target and Source checksums are the same, taking no action"
-else
-  backup_new_resource
+        fetch_from_s3(@new_resource.source) do |raw_file|
 
-Chef::Log.debug "copying remote file from origin #{raw_file.path} to destination #{@new_resource.path}"
-FileUtils.cp raw_file.path, @new_resource.path
-@new_resource.updated = true
+        if matches_current_checksum?(raw_file)
+          Chef::Log.debug "#{@new_resource}: Target and Source checksums are the same, taking no action"
+        else
+          backup_new_resource
+
+        Chef::Log.debug "copying remote file from origin #{raw_file.path} to destination #{@new_resource.path}"
+        FileUtils.cp raw_file.path, @new_resource.path
+        @new_resource.updated = true
+      end
+    end
 end
-end
-end
+
 enforce_ownership_and_permissions
  
 @new_resource.updated
