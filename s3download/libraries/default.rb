@@ -13,10 +13,6 @@ Module S3_Util
     open(dest, 'w') do |file|
       s3.stream(name, bucket) do |chunk|
       file.write chunk
-    end
   end
-
-    
-  end
-    
+        
 end
