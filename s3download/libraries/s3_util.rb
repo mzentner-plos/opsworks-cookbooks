@@ -3,6 +3,7 @@
 #
 
 require 'aws/s3'
+require '../attributes/default.rb'
 
 module S3Util
   
