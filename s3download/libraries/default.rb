@@ -1,5 +1,5 @@
 
-class Chef::Recipe::namespace
+class Chef::Recipe::Namespace
   
   include S3Util
 
