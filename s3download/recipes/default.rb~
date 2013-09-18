@@ -1,13 +1,9 @@
-# Source accepts the protocol s3:// with the host as the bucket
-# access_key_id and secret_access_key are just that
 
 require 'aws/s3'
 
-s3_file "/var/tmp/config.xml" do
-  source "s3://plos-ambra/jenkins/config.xml"
-  access_key_id "AKIAJX3TKDB6RSSOEUQQ"
-  secret_access_key "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"
-  owner "root"
-  group "root"
-  mode 0644
-end
+
+# download ambra related files
+
+# this is relative to https://s3.amazonaws.com/plos-ambra/
+S3_util.download("jenkins/config.xml", "/var/tmp/config.xml")
+
