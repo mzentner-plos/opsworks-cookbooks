@@ -2,9 +2,9 @@
 require 'aws/s3'
 
 
-module s3_util
+module S3_util
   
-  def download(name, bucket, dest)
+  def self.download(name, bucket, dest)
   
     # establish the connection
     
