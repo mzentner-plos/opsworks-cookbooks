@@ -1,5 +1,6 @@
 
 require 'aws/s3'
+require '../libraries/s3_util.rb'
 
 
 # download ambra related files
