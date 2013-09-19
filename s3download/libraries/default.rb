@@ -1,4 +1,4 @@
-
+puts $:
 
 require 'aws/s3'
 
