@@ -10,7 +10,7 @@ module S3Util
   def self.download(name, bucket, dest)
   
     # establish the connection
-    s3 =  AWS::S3.new( :access_key_id => default.aws.access_key, :secret_access_key => default.aws.secret_key )
+    s3 =  AWS::S3.new( :access_key_id => node[:aws][:access_key], :secret_access_key => node[:aws][:secret_key] )
 
     # open the destination file and stream it.
     open(dest, 'w') do |file|
