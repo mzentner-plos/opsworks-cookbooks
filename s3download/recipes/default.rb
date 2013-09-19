@@ -1,6 +1,5 @@
 
 require 'aws/s3'
-load 'attributes/default.rb'
 
 
 # download ambra related files

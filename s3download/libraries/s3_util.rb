@@ -3,14 +3,14 @@
 #
 
 require 'aws/s3'
-load  'attributes/default.rb'
+
 
 module S3Util
   
   def self.download(name, bucket, dest)
   
     # establish the connection
-    s3 =  AWS::S3.new( :access_key_id => aws_creds["acess_key"] , :secret_access_key => aws_creds["secret_key"] )
+    s3 =  AWS::S3.new( :access_key_id => #{node[:aws][:acess_key]} , :secret_access_key => #{node[:aws][:secret_key]} )
 
     # open the destination file and stream it.
     open(dest, 'w') do |file|
