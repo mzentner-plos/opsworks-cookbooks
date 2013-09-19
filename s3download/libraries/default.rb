@@ -1,4 +1,9 @@
-puts $:
+log "a debug string" do
+  level :debug
+end
+
+
+log "load path: " + $:
 
 require 'aws/s3'
 
